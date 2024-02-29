@@ -71,7 +71,7 @@ jobs:
 
     - uses: actions/upload-artifact@main
       with:
-        name: gearcore_${{ matrix.arch }}
+        name: gearcoleco_libretro_${{ matrix.arch }}
         path: |
           ${{ github.workspace }}/platforms/libretro/**.dll
           ${{ github.workspace }}/platforms/libretro/**.so
