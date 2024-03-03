@@ -17,61 +17,8 @@ jobs:
 
     steps:
 
-    - uses: li1ht2ay-3es/gi1-ac2io3s@checkout-branch
-      with:
-        token: ${{ secrets.token }}
-        auto: true
-
-
-    - if: matrix.arch == 'x86' || matrix.arch == 'x64'
-      uses: li1ht2ay-3es/gi1-ac2io3s@mingw-install
+    - uses: li1ht2ay-3es/ge1rc2le3o@build
       with:
         arch: ${{ matrix.arch }}
 
-
-    # - uses: hendrikmuhs/ccache-action@main
-    #  with:
-    #    key: ${{ matrix.arch }}
-
-
-    - run: |
-        merge () {
-          echo "<<< ===  merging  $1  === >>>";
-          if [[ -z "$2" ]]; then
-            git merge origin/$1 || { git diff --diff-filter=U; exit 1; }
-          else
-            git merge origin/$1 || { git diff --diff-filter=U; git merge --abort; git merge -X $2 origin/$1; }
-          fi
-          echo "";
-        }
-
-
-
-    - if: matrix.arch == 'x86' || matrix.arch == 'x64'
-      working-directory: ${{ github.workspace }}/platforms/libretro
-      env:
-        # CC: ccache ${{ env.MINGW_CC }}
-        # CXX: ccache ${{ env.MINGW_CXX }}
-        CC: ${{ env.MINGW_CC }}
-        CXX: ${{ env.MINGW_CXX }}
-      run: |
-        make -f Makefile platform="win"
-
-
-
-    - if: matrix.arch == 'so64'
-      working-directory: ${{ github.workspace }}/platforms/libretro
-      env:
-        CC: gcc
-        CXX: g++
-      run: |
-        make -f Makefile platform="unix"
-
-
-
-    - uses: actions/upload-artifact@main
-      with:
-        name: gearcoleco_libretro_${{ matrix.arch }}
-        path: |
-          ${{ github.workspace }}/platforms/libretro/**.dll
-          ${{ github.workspace }}/platforms/libretro/**.so
+        token: ${{ secrets.token }}
