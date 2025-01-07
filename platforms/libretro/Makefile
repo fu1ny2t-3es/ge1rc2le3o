@@ -324,8 +324,19 @@ ifeq ($(DEBUG), 1)
 	BUILD_CONFIG = Debug
 	CXXFLAGS += -O0 -DDEBUG -g
 else
+<<<<<<< HEAD
 	BUILD_CONFIG = Release
+<<<<<<< HEAD
 	CXXFLAGS += -O3 -DNDEBUG
+=======
+=======
+<<<<<<< HEAD
+>>>>>>> 9067add (Update a.yml)
+	CXXFLAGS += -O3
+=======
+   CXXFLAGS += -O3 -flto
+>>>>>>> 79226a5 (Add files via upload)
+>>>>>>> 3bc0a88 (Update a.yml)
 endif
 
 GIT_VERSION ?= $(shell git describe --abbrev=7 --dirty --always --tags || echo unknown)
