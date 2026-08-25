@@ -341,11 +341,15 @@ ifeq ($(DEBUG), 1)
 	CXXFLAGS += -O0 -DDEBUG -g
 else
 	BUILD_CONFIG = Release
+<<<<<<< HEAD
 	CXXFLAGS += -O3 -DNDEBUG
 	ifeq ($(LTO), 1)
 		CXXFLAGS += -flto
 		LDFLAGS += -O3 -flto
 	endif
+=======
+	CXXFLAGS += -O3 -DNDEBUG -flto
+>>>>>>> ebf1121 (Update a.yml)
 endif
 
 PROJECT_ROOT := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/../..)
