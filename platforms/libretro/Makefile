@@ -336,8 +336,13 @@ ifeq ($(DEBUG), 1)
 	CXXFLAGS += -O0 -DDEBUG -g
 else
 	BUILD_CONFIG = Release
+<<<<<<< HEAD
 	CFLAGS += -O3 -DNDEBUG
 	CXXFLAGS += -O3 -DNDEBUG -fno-rtti
+=======
+<<<<<<< HEAD
+	CXXFLAGS += -O3 -DNDEBUG
+>>>>>>> f55f606 (Update a.yml)
 	ifeq ($(LTO), 1)
 		LTO_FLAGS := $(shell $(CXX) -x c++ -flto=auto -c /dev/null -o /dev/null >/dev/null 2>&1 \
 			&& echo -flto=auto || echo -flto)
@@ -345,6 +350,9 @@ else
 		CXXFLAGS += $(LTO_FLAGS)
 		LDFLAGS += -O3 $(LTO_FLAGS)
 	endif
+=======
+	CXXFLAGS += -O3 -DNDEBUG -flto
+>>>>>>> ebf1121 (Update a.yml)
 endif
 
 GIT_VERSION ?= $(shell git -c safe.directory="$(PROJECT_ROOT)" describe --abbrev=7 --dirty --always --tags || echo unknown)
