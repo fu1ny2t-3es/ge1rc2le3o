@@ -625,7 +625,7 @@ void emu_update(void)
 
     if ((sampleCount > 0) && !gearcoleco->IsPaused())
     {
-        sound_queue_write(audio_buffer, sampleCount, emu_audio_sync, emu_audio_rate_control, emu_audio_ratio);
+        sound_queue_write(audio_buffer, sampleCount, emu_audio_sync, emu_audio_rate_control, emu_audio_ratio, !emu_audio_sync);
     }
     else if (gearcoleco->IsPaused())
     {
